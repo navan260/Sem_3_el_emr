@@ -1,10 +1,10 @@
-import easyocr
-import numpy as np
 import cv2
 from pdf2image import convert_from_bytes
+import numpy as np
 
 class EMROCR:
     def __init__(self, lang_list=['en'], gpu=False):
+        import easyocr
         self.reader = easyocr.Reader(lang_list, gpu=gpu)
 
     def process_pdf(self, pdf_bytes):
@@ -33,8 +33,44 @@ class EMROCR:
         return text
 
 
+class PyTesseractOCR:
+    def __init__(self, lang='eng'):
+        import pytesseract
+        self.pytesseract = pytesseract
+        self.lang = lang
+
+    def process_pdf(self, pdf_bytes):
+        from pdf2image import convert_from_bytes
+        pages = convert_from_bytes(pdf_bytes)
+        all_text = []
+        for page in pages:
+            img = np.array(page)
+            text = self._read_image(img)
+            all_text.append(text)
+        return "\n\n".join(all_text)
+
+    def process_image(self, img_bytes):
+        img_np = np.frombuffer(img_bytes, np.uint8)
+        img = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
+        return self._read_image(img)
+
+    def _read_image(self, img):
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        gray = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+
+        text = self.pytesseract.image_to_string(gray, lang=self.lang)
+        return text
+
 if __name__=='__main__':
     eo = EMROCR()
-    img = cv2.imread('./sample_docs/printed/report.png')
+    img_path = 'ocr_util/sample_docs/printed/report.png'
+    img = cv2.imread(img_path)
     _, im_by = cv2.imencode('.png', img)
-    print(eo.process_image(im_by))
+    with open('easyocr.txt', 'w') as f:
+        f.write(eo.process_image(im_by))
+    
+    to = PyTesseractOCR()
+    img = cv2.imread(img_path)
+    _, im_by = cv2.imencode('.png', img)
+    with open('pytesseract.txt', 'w') as f:
+        f.write(to.process_image(im_by))

@@ -1,3 +1,22 @@
-fastapi
-uvicorn
-pydantic
+# FastAPI Backend Dependencies
+# =============================
+
+# Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic[email]==2.5.0
+
+# File Handling
+python-multipart==0.0.6
+aiofiles==23.2.1
+
+# Database
+mysql-connector-python==8.2.0
+python-dotenv==1.0.0
+
+# Gemini AI Integration
+google-genai==0.2.0
+
+# Utilities
+Pillow==10.1.0

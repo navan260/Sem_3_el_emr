@@ -16,7 +16,7 @@ mysql-connector-python==8.2.0
 python-dotenv==1.0.0
 
 # Gemini AI Integration
-google-genai==0.2.0
+google-generativeai==0.7.0
 
 # Utilities
 Pillow==10.1.0

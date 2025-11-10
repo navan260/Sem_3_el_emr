@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Information Form</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
 </head>
 <body>
     <div class="container">
@@ -34,47 +34,13 @@
                 <label for="patientAddress">Address</label>
                 <textarea id="patientAddress" name="patientAddress" required></textarea>
             </div>
-
+            <div class="form-group">
+                <label for="diseaseName">Disease Name</label>
+                <input type="text" id="diseaseName" name="diseaseName" required>
+            </div>
             <button type="submit">Submit</button>
         </form>
     </div>
-
-    <!-- <script>
-        document.getElementById('patientForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                patientId: document.getElementById('patientId').value,
-                patientName: document.getElementById('patientName').value,
-                patientPhone: document.getElementById('patientPhone').value,
-                patientEmail: document.getElementById('patientEmail').value,
-                patientAddress: document.getElementById('patientAddress').value
-            };
-
-            console.log('Sending Patient Information:', formData);
-
-            try {
-                // Replace the URL with an actual API endpoint
-                const response = await fetch('http://127.0.0.1:8000/patient/form', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                const result = await response.json();
-                console.log('Response from server:', result);
-                
-                alert('Patient information submitted successfully!');
-                
-                this.reset();
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                alert('Error submitting patient information. Please try again.');
-            }
-        });
-    </script> -->
 </body>
 </html>
 

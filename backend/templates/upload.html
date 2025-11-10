@@ -10,7 +10,7 @@
     <div class="container">
         <h1>File Upload</h1>
         
-        <form id="uploadForm">
+        <form id="uploadForm" action="/patient/upload">
             <div class="form-group">
                 <label for="fileInput">Choose File:</label>
                 <input 
@@ -50,47 +50,47 @@
             }
         });
 
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
+        // form.addEventListener('submit', async function(e) {
+        //     e.preventDefault();
             
-            const file = fileInput.files[0];
+        //     const file = fileInput.files[0];
 
-            if (!file) {
-                showMessage('Please select a file', 'error');
-                return;
-            }
+        //     if (!file) {
+        //         showMessage('Please select a file', 'error');
+        //         return;
+        //     }
 
-            const formData = new FormData();
-            formData.append('file', file);
+        //     const formData = new FormData();
+        //     formData.append('file', file);
 
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Uploading...';
-            messageDiv.style.display = 'none';
+        //     submitBtn.disabled = true;
+        //     submitBtn.textContent = 'Uploading...';
+        //     messageDiv.style.display = 'none';
 
-            try {
-                const response = await fetch(API_ENDPOINT, {
-                    method: 'POST',
-                    body: formData
-                });
+        //     try {
+        //         const response = await fetch(API_ENDPOINT, {
+        //             method: 'POST',
+        //             body: formData
+        //         });
 
-                if (response.ok) {
-                    const result = await response.json();
-                    showMessage('File uploaded successfully!', 'success');
-                    console.log('Upload response:', result);
+        //         if (response.ok) {
+        //             const result = await response.json();
+        //             showMessage('File uploaded successfully!', 'success');
+        //             console.log('Upload response:', result);
                     
-                    form.reset();
-                    fileInfo.style.display = 'none';
-                } else {
-                    throw new Error(`Upload failed: ${response.status} ${response.statusText}`);
-                }
-            } catch (error) {
-                showMessage(`Error: ${error.message}`, 'error');
-                console.error('Upload error:', error);
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit';
-            }
-        });
+        //             form.reset();
+        //             fileInfo.style.display = 'none';
+        //         } else {
+        //             throw new Error(`Upload failed: ${response.status} ${response.statusText}`);
+        //         }
+        //     } catch (error) {
+        //         showMessage(`Error: ${error.message}`, 'error');
+        //         console.error('Upload error:', error);
+        //     } finally {
+        //         submitBtn.disabled = false;
+        //         submitBtn.textContent = 'Submit';
+        //     }
+        // });
 
         function showMessage(text, type) {
             messageDiv.textContent = text;

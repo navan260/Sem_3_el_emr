@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Patient Information</h1>
-        <form id="patientForm">
+        <form id="patientForm" action="/patient/form" method="post">
             <div class="form-group">
                 <label for="patientId">Patient ID</label>
                 <input type="text" id="patientId" name="patientId" required>
@@ -39,7 +39,7 @@
         </form>
     </div>
 
-    <script>
+    <!-- <script>
         document.getElementById('patientForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -55,7 +55,7 @@
 
             try {
                 // Replace the URL with an actual API endpoint
-                const response = await fetch('https://api.example.com/patients', {
+                const response = await fetch('http://127.0.0.1:8000/patient/form', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@
                 alert('Error submitting patient information. Please try again.');
             }
         });
-    </script>
+    </script> -->
 </body>
 </html>
 

@@ -3,7 +3,7 @@ Patient CRUD Operations for Supabase
 =====================================
 """
 
-from supabase_config import get_supabase_client
+from .supabase_config import get_supabase_client
 from datetime import date
 from typing import List, Dict, Optional
 

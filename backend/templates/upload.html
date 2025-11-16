@@ -6,6 +6,7 @@
     <title>File Upload</title>
     <link rel="stylesheet" href="../static/upload.css">
 </head>
+
 <body>
     <div class="container">
         <h1>File Upload</h1>
@@ -19,84 +20,32 @@
                     name="file"
                     required
                 >
-                <div id="fileInfo" class="file-info" style="display: none;"></div>
+                <div id="fileInfo" class="file-info" style="display:none;"></div>
             </div>
 
             <button type="submit" id="submitBtn">Submit</button>
         </form>
-
-        <div id="message" class="message"></div>
     </div>
 
     <script>
-        const form = document.getElementById('uploadForm');
-        const fileInput = document.getElementById('fileInput');
-        const fileInfo = document.getElementById('fileInfo');
-        const submitBtn = document.getElementById('submitBtn');
-        const messageDiv = document.getElementById('message');
-        const API_ENDPOINT = 'https://api.example.com/file-upload'; // Replace with actual API endpoint
+        const fileInput = document.getElementById("fileInput");
+        const fileInfo = document.getElementById("fileInfo");
 
-        fileInput.addEventListener('change', function(e) {
+        // Show file info when user selects file
+        fileInput.addEventListener("change", function(e) {
             const file = e.target.files[0];
+
             if (file) {
-                fileInfo.style.display = 'block';
+                fileInfo.style.display = "block";
                 fileInfo.innerHTML = `
                     <strong>Selected:</strong> ${file.name}<br>
                     <strong>Size:</strong> ${(file.size / 1024).toFixed(2)} KB<br>
-                    <strong>Type:</strong> ${file.type || 'Unknown'}
+                    <strong>Type:</strong> ${file.type || "Unknown"}
                 `;
             } else {
-                fileInfo.style.display = 'none';
+                fileInfo.style.display = "none";
             }
         });
-
-        // form.addEventListener('submit', async function(e) {
-        //     e.preventDefault();
-            
-        //     const file = fileInput.files[0];
-
-        //     if (!file) {
-        //         showMessage('Please select a file', 'error');
-        //         return;
-        //     }
-
-        //     const formData = new FormData();
-        //     formData.append('file', file);
-
-        //     submitBtn.disabled = true;
-        //     submitBtn.textContent = 'Uploading...';
-        //     messageDiv.style.display = 'none';
-
-        //     try {
-        //         const response = await fetch(API_ENDPOINT, {
-        //             method: 'POST',
-        //             body: formData
-        //         });
-
-        //         if (response.ok) {
-        //             const result = await response.json();
-        //             showMessage('File uploaded successfully!', 'success');
-        //             console.log('Upload response:', result);
-                    
-        //             form.reset();
-        //             fileInfo.style.display = 'none';
-        //         } else {
-        //             throw new Error(`Upload failed: ${response.status} ${response.statusText}`);
-        //         }
-        //     } catch (error) {
-        //         showMessage(`Error: ${error.message}`, 'error');
-        //         console.error('Upload error:', error);
-        //     } finally {
-        //         submitBtn.disabled = false;
-        //         submitBtn.textContent = 'Submit';
-        //     }
-        // });
-
-        function showMessage(text, type) {
-            messageDiv.textContent = text;
-            messageDiv.className = `message ${type}`;
-            messageDiv.style.display = 'block';
-        }
     </script>
 </body>
 </html>

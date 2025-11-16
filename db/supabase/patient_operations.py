@@ -153,6 +153,7 @@ def update_patient(patient_id: int, name: str = None, phone: str = None,
     Returns:
         True if successful, False otherwise
     """
+
     try:
         updates = {}
         

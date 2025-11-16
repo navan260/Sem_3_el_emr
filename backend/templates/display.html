@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Patients</title>
+    <link rel="stylesheet" href="../static/display.css">
+</head>
+<body>
+
+<h2>Patient List</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Disease ID</th>
+            <th>Disease Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.patient_id }}</td>
+            <td>{{ patient.patient_name }}</td>
+            <td>{{ patient.patient_phone }}</td>
+            <td>{{ patient.patient_email }}</td>
+            <td>{{ patient.patient_address }}</td>
+            <td>{{ patient.disease_id }}</td>
+            <td>{{ patient.disease_name }}</td>
+            <td>
+                <a href="/edit/{{ patient.patient_id }}"><img src="../static/images/edit_icon.png" height="20px" width="20px"> </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

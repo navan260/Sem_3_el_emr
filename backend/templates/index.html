@@ -6,15 +6,11 @@
     <title>Patient Information Form</title>
     <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
 </head>
+
 <body>
     <div class="container">
         <h1>Patient Information</h1>
         <form id="patientForm" action="/patient/form" method="post">
-            <div class="form-group">
-                <label for="patientId">Patient ID</label>
-                <input type="text" id="patientId" name="patientId" required>
-            </div>
-
             <div class="form-group">
                 <label for="patientName">Patient Name</label>
                 <input type="text" id="patientName" name="patientName" pattern="[A-Za-z\s]+" title="Patient name should only contain letters and spaces" required>
@@ -37,6 +33,10 @@
             <div class="form-group">
                 <label for="diseaseName">Disease Name</label>
                 <input type="text" id="diseaseName" name="diseaseName" required>
+            </div>
+            <div class="form-group">
+                <label for="diseaseID">Disease ID</label>
+                <input type="text" id="diseaseID" name="diseaseID" required>
             </div>
             <button type="submit">Submit</button>
         </form>

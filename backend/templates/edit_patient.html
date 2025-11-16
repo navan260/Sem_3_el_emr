@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Patient</title>
+    <link rel="stylesheet" href="../static/edit_patient.css">
+</head>
+<body>
+
+<form action="/patient/save" method="post">
+    
+    <h2>Confirm / Edit Patient Details</h2>
+
+    <label>Name:</label>
+    <input type="text" name="name" value="{{ data['patient-name'] }}"><br><br>
+
+    <label>Phone Number:</label>
+    <input type="text" name="phone" value="{{ data['phone-number'] }}"><br><br>
+
+    <label>Email:</label>
+    <input type="text" name="email" value="{{ data['patient-email'] }}"><br><br>
+
+    <label>Address:</label>
+    <input type="text" name="address" value="{{ data['patient-address'] }}"><br><br>
+
+    <label>Disease Name:</label>
+    <input type="text" name="disease_name" value="{{ data['disease-name'] }}"><br><br>
+
+    <label>Disease ID:</label>
+    <input type="text" name="disease_id" value=""><br><br>
+
+    <button type="submit">Save Details</button>
+</form>
+
+</body>
+</html>

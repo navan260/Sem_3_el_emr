@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Patient</title>
+    <link rel="stylesheet" href="../static/edit.css">
+</head>
+
+<body>
+    <form method="post">
+        
+        <h1>Edit Patient</h1>
+
+        <label>Patient Name:</label>
+        <input type="text" name="name" value="{{ patient.patient_name }}">
+
+        <label>Phone Number:</label>
+        <input type="number" name="phone" value="{{ patient.patient_phone }}">
+
+        <label>Email:</label>
+        <input type="email" name="email" value="{{ patient.patient_email }}">
+
+        <label>Address:</label>
+        <input type="text" name="address" value="{{ patient.patient_address }}">
+
+        <label>Disease ID:</label>
+        <input type="number" name="disease_id" value="{{ patient.disease_id }}">
+
+        <label>Disease Name:</label>
+        <input type="text" name="disease_name" value="{{ patient.disease_name }}">
+
+        <br>
+
+        <button type="submit">Save</button>
+    </form>
+
+</body>
+</html>

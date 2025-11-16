@@ -42,7 +42,7 @@ def gemini_extract(file_data, mime_type):
 
     # 🔹 Get model output
     raw_output = response.text.strip()
-    print("RAW OUTPUT FROM GEMINI:\n", raw_output)
+    # print("RAW OUTPUT FROM GEMINI:\n", raw_output)
 
     # 🔹 Clean out code fences like ```json ... ```
     cleaned = re.sub(r"```json|```", "", raw_output).strip()
